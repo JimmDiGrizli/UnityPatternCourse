@@ -9,10 +9,10 @@ namespace Task4.Scripts.VictoryPattern
         private readonly Color _winColor;
         private int _count;
 
-        public OneColorCalculator(IReadOnlyCollection<Ball> balls)
+        public OneColorCalculator(IReadOnlyCollection<IBall> balls)
         {
-            _winColor = balls.First().Color();
-            _count = balls.Count(ball => ball.Color() == _winColor);
+            _winColor = balls.First().Color;
+            _count = balls.Count(ball => ball.Color == _winColor);
 
             Debug.Log($"Для победы нужно лопнуть все шары с цветом: {_winColor}");
         }

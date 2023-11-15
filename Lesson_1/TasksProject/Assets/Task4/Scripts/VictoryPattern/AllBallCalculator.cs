@@ -7,7 +7,7 @@ namespace Task4.Scripts.VictoryPattern
     {
         private int _count;
 
-        public AllBallsCalculator(IReadOnlyCollection<Ball> balls)
+        public AllBallsCalculator(IReadOnlyCollection<IBall> balls)
         {
             _count = balls.Count;
             Debug.Log($"Для победы нужно лопнуть все {_count} шары.");
