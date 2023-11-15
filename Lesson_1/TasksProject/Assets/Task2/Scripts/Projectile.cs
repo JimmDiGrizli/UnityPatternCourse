@@ -8,7 +8,7 @@ namespace Task2.Scripts
 
         private void Start()
         {
-            // Destroy(gameObject, 3.0f);
+             Destroy(gameObject, 3.0f);
         }
 
         private void Update()
