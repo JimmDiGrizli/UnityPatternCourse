@@ -25,10 +25,14 @@ namespace Task2.Scripts
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Q))
+            {
                 LastWeapon();
+            }
 
             if (Input.GetKeyDown(KeyCode.E))
+            {
                 NextWeapon();
+            }
 
             if (Input.GetKeyDown(KeyCode.Space))
                 _weapons?[_currentWeapon]?.Shoot();
@@ -37,9 +41,18 @@ namespace Task2.Scripts
         private void LastWeapon()
         {
             if (_weapons.Count == 0)
+            {
                 return;
+            }
 
-            if (--_currentWeapon < 0) _currentWeapon = _weapons.Count - 1;
+            if (_currentWeapon > 0)
+            {
+                _currentWeapon = _weapons.Count - 1;
+            }
+            else
+            {
+                _currentWeapon--;
+            }
 
             Debug.Log($"Выбрали оружие {_currentWeapon}.");
         }
@@ -47,9 +60,18 @@ namespace Task2.Scripts
         private void NextWeapon()
         {
             if (_weapons.Count == 0)
+            {
                 return;
+            }
 
-            if (++_currentWeapon == _weapons.Count) _currentWeapon = 0;
+            if (_currentWeapon == _weapons.Count)
+            {
+                _currentWeapon = 0;
+            }
+            else
+            {
+                _currentWeapon++;
+            }
 
             Debug.Log($"Выбрали оружие {_currentWeapon}.");
         }

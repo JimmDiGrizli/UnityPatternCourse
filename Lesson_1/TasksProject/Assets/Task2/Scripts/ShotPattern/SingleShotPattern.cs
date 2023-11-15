@@ -14,6 +14,8 @@ namespace Task2.Scripts.ShotPattern
             _ammo = AmmoPerShoot >= ammo ? AmmoPerShoot : ammo;
         }
 
+        public bool IsCanShoot() => _ammo > AmmoPerShoot;
+
         public IReadOnlyCollection<Vector3> Fire(Transform muzzle)
         {
             return WasteAmmo() ? new[] { muzzle.position } : null;
@@ -21,14 +23,12 @@ namespace Task2.Scripts.ShotPattern
 
         private bool WasteAmmo()
         {
-            if (_ammo < AmmoPerShoot)
+            if (IsCanShoot() == false)
             {
-                Debug.Log($"Не хватает {AmmoPerShoot - _ammo} патронов для выстрела.");
                 return false;
             }
 
             _ammo -= AmmoPerShoot;
-            Debug.Log($"Осталось патронов: {_ammo}.");
             return true;
         }
     }

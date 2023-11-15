@@ -11,16 +11,24 @@ namespace Task2.Scripts
 
         public Weapon(Transform muzzle, Projectile projectile, IProjectileShooter projectileShooter)
         {
-            _muzzle = muzzle ? muzzle : throw new InvalidOperationException(nameof(muzzle));
-            _projectile = projectile ? projectile : throw new InvalidOperationException(nameof(projectile));
-            _projectileShooter = projectileShooter ?? throw new InvalidOperationException(nameof(projectileShooter));
+            _muzzle = muzzle;
+            _projectile = projectile;
+            _projectileShooter = projectileShooter;
         }
 
         public void Shoot()
         {
-            var positions = _projectileShooter.Fire(_muzzle);
-            if (positions is null)
+            if (_projectileShooter.IsCanShoot() == false)
+            {
+                Debug.Log($"Не хватает патронов для выстрела.");
                 return;
+            }
+            var positions = _projectileShooter.Fire(_muzzle);
+
+            if (positions is null)
+            {
+                return;
+            }
 
             foreach (var position in positions)
             {
@@ -35,6 +43,8 @@ namespace Task2.Scripts
 
             transform.position = position;
             transform.forward = _muzzle.forward;
+
+            projectile.Launch();
         }
     }
 }
