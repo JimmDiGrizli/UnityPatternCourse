@@ -9,7 +9,7 @@ namespace Task4.Scripts
     {
         [SerializeField] private List<ColorScriptableObject> _colors;
         private List<Ball> _balls;
-        private IVictoryCalculator _victoryCalculator;
+        private VictoryCalculator _victoryCalculator;
 
         private void Awake()
         {

@@ -1,34 +1,23 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace Task4.Scripts.VictoryPattern
 {
-    public class OneColorCalculator : IVictoryCalculator
+    public class OneColorCalculator : VictoryCalculator
     {
         private readonly ColorScriptableObject _winColor;
-        private readonly IReadOnlyCollection<IBall> _balls;
         private int _count;
 
-        public event Action<bool> OnFinished = delegate { };
-
-        public OneColorCalculator(IReadOnlyCollection<IBall> balls)
+        public OneColorCalculator(IReadOnlyCollection<IBall> balls) : base(balls)
         {
-            _balls = balls;
-
-            foreach (var ball in balls)
-            {
-                ball.OnSelected += Interact;
-            }
-
             _winColor = balls.First().Color;
             _count = balls.Count(ball => ball.Color == _winColor);
 
             Debug.Log($"Для победы нужно лопнуть все шары с цветом: {_winColor.Name}");
         }
 
-        private void Interact(ColorScriptableObject color)
+        protected override void Interact(ColorScriptableObject color)
         {
             if (color != _winColor)
             {
@@ -41,16 +30,6 @@ namespace Task4.Scripts.VictoryPattern
             }
 
             Finish(true);
-        }
-
-        private void Finish(bool isSuccess)
-        {
-            OnFinished.Invoke(isSuccess);
-
-            foreach (var ball in _balls)
-            {
-                ball.OnSelected -= Interact;
-            }
         }
     }
 }
