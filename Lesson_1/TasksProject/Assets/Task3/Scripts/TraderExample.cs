@@ -1,4 +1,3 @@
-using Task3.Scripts.TraderPattern;
 using UnityEngine;
 
 namespace Task3.Scripts
@@ -6,17 +5,12 @@ namespace Task3.Scripts
     public class TraderExample : MonoBehaviour
     {
         [SerializeField] private Npc _npc;
+        [SerializeField] private Player _player;
+        private TraderBehaviourSwitcher _traderBehaviour;
 
         private void Awake()
         {
-            _npc.Initialized(
-                new ITrader[]
-                {
-                    new NonTradingPattern(),
-                    new AppleSellingPattern(3),
-                    new AmmoSellingPattern(6)
-                }
-            );
+            _traderBehaviour = new TraderBehaviourSwitcher(_npc, _player);
         }
     }
 }

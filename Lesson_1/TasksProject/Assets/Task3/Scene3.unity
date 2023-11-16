@@ -595,6 +595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _npc: {fileID: 1230231655}
+  _player: {fileID: 1046355948}
 --- !u!1 &1468873945
 GameObject:
   m_ObjectHideFlags: 0
