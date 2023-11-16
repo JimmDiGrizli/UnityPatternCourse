@@ -17,7 +17,7 @@ namespace Task4.Scripts
             if (_mesh == null) _mesh = GetComponent<MeshRenderer>();
         }
 
-        private void OnMouseUp()
+        public void Select()
         {
             OnSelected.Invoke(Color);
             gameObject.SetActive(false);
