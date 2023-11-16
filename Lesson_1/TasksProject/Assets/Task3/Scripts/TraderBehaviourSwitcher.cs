@@ -6,7 +6,7 @@ namespace Task3.Scripts
     {
         private readonly Npc _npc;
 
-        public TraderBehaviourSwitcher(Npc npc, Player player)
+        public TraderBehaviourSwitcher(Npc npc, ISocialize player)
         {
             _npc = npc;
             player.OnSocialRatingChanged += ChangedSellingPattern;
