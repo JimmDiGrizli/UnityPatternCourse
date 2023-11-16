@@ -8,7 +8,7 @@ namespace Task4.Scripts
 {
     public class GameExample : MonoBehaviour
     {
-        [SerializeField] private List<Color> _colors;
+        [SerializeField] private List<ColorScriptableObject> _colors;
         private List<Ball> _balls;
         private IVictoryCalculator _victoryCalculator;
 
@@ -45,7 +45,7 @@ namespace Task4.Scripts
             _balls.ForEach(ball => ball.SetColor(_colors[rnd.Next(0, _colors.Count)]));
         }
 
-        private void Interact(Color color)
+        private void Interact(ColorScriptableObject color)
         {
             switch (_victoryCalculator.Calculate(color))
             {

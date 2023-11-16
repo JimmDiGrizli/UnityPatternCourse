@@ -6,7 +6,7 @@ namespace Task4.Scripts.VictoryPattern
 {
     public class OneColorCalculator : IVictoryCalculator
     {
-        private readonly Color _winColor;
+        private readonly ColorScriptableObject _winColor;
         private int _count;
 
         public OneColorCalculator(IReadOnlyCollection<IBall> balls)
@@ -14,10 +14,10 @@ namespace Task4.Scripts.VictoryPattern
             _winColor = balls.First().Color;
             _count = balls.Count(ball => ball.Color == _winColor);
 
-            Debug.Log($"Для победы нужно лопнуть все шары с цветом: {_winColor}");
+            Debug.Log($"Для победы нужно лопнуть все шары с цветом: {_winColor.Name}");
         }
 
-        public GameState Calculate(Color color)
+        public GameState Calculate(ColorScriptableObject color)
         {
             if (color != _winColor) return GameState.Loose;
             return --_count == 0 ? GameState.Win : GameState.InProgress;

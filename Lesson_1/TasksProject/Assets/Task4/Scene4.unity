@@ -1871,9 +1871,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _colors:
-  - {r: 0.6981132, g: 0.21766299, b: 0.1745283, a: 0}
-  - {r: 0.47450984, g: 0.5686275, b: 0.6509804, a: 0}
-  - {r: 0.12482198, g: 0.5188679, b: 0.2612014, a: 0}
+  - {fileID: 11400000, guid: 3e31bdbe611525542bd1433486a13fe0, type: 2}
+  - {fileID: 11400000, guid: 0669a5e235c04a4459029b2f86ae9d35, type: 2}
+  - {fileID: 11400000, guid: 83df7bc5710942e48b1fdf211ecad254, type: 2}
 --- !u!4 &2073002586
 Transform:
   m_ObjectHideFlags: 0

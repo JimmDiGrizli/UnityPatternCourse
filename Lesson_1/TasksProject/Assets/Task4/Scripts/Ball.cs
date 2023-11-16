@@ -6,11 +6,11 @@ namespace Task4.Scripts
     [RequireComponent(typeof(MeshRenderer))]
     public class Ball : MonoBehaviour, IBall
     {
-        public event Action<Color> OnSelected = delegate { };
+        public event Action<ColorScriptableObject> OnSelected = delegate { };
 
         private MeshRenderer _mesh;
 
-        public Color Color => _mesh.material.color;
+        public ColorScriptableObject Color { get; private set; }
 
         private void OnValidate()
         {
@@ -19,13 +19,14 @@ namespace Task4.Scripts
 
         private void OnMouseUp()
         {
-            OnSelected.Invoke(_mesh.material.color);
+            OnSelected.Invoke(Color);
             gameObject.SetActive(false);
         }
 
-        public void SetColor(Color color)
+        public void SetColor(ColorScriptableObject color)
         {
-            _mesh.material.color = color;
+            Color = color;
+            _mesh.material.color = color.Color;
         }
     }
 }
