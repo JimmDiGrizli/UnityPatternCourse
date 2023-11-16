@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Task4.Scripts.VictoryPattern;
 using UnityEngine;
@@ -15,7 +14,6 @@ namespace Task4.Scripts
         private void Awake()
         {
             _balls = new List<Ball>(FindObjectsOfType<Ball>());
-            _balls.ForEach(ball => ball.OnSelected += color => Interact(color));
             RunWithOneColor();
         }
 
@@ -28,13 +26,23 @@ namespace Task4.Scripts
         private void RunWithAllColors()
         {
             PrepareBalls();
+            if (_victoryCalculator is not null) _victoryCalculator.OnFinished -= Finish;
             _victoryCalculator = new AllBallsCalculator(_balls);
+            _victoryCalculator.OnFinished += Finish;
         }
 
         private void RunWithOneColor()
         {
             PrepareBalls();
+            if (_victoryCalculator is not null)  _victoryCalculator.OnFinished -= Finish;
             _victoryCalculator = new OneColorCalculator(_balls);
+            _victoryCalculator.OnFinished += Finish;
+        }
+
+        private void Finish(bool isSuccess)
+        {
+            Debug.Log(isSuccess ? "Победа!" : "Поражение…");
+            _balls.ForEach(ball => ball.gameObject.SetActive(false));
         }
 
         private void PrepareBalls()
@@ -44,26 +52,5 @@ namespace Task4.Scripts
             var rnd = new Random();
             _balls.ForEach(ball => ball.SetColor(_colors[rnd.Next(0, _colors.Count)]));
         }
-
-        private void Interact(ColorScriptableObject color)
-        {
-            switch (_victoryCalculator.Calculate(color))
-            {
-                case GameState.InProgress:
-                    break;
-                case GameState.Win:
-                    Debug.Log("Победа!");
-                    Finish();
-                    break;
-                case GameState.Loose:
-                    Debug.Log("Поражение…");
-                    Finish();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-
-        private void Finish() => _balls.ForEach(ball => ball.gameObject.SetActive(false));
     }
 }

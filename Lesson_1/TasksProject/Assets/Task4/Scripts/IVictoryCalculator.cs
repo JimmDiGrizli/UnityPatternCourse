@@ -1,9 +1,9 @@
-using UnityEngine;
+using System;
 
 namespace Task4.Scripts
 {
     public interface IVictoryCalculator
     {
-        GameState Calculate(ColorScriptableObject color);
+        public event Action<bool> OnFinished;
     }
 }
