@@ -13,7 +13,7 @@ namespace Task4.Scripts.VictoryPattern
         {
             _balls = balls;
 
-            foreach (var ball in balls)
+            foreach (var ball in _balls)
             {
                 ball.OnSelected += Interact;
             }
@@ -28,6 +28,7 @@ namespace Task4.Scripts.VictoryPattern
             foreach (var ball in _balls)
             {
                 ball.OnSelected -= Interact;
+                ball.Deactivate();
             }
         }
     }

@@ -6,5 +6,6 @@ namespace Task4.Scripts
     {
         ColorScriptableObject Color { get; }
         event Action<ColorScriptableObject> OnSelected;
+        public void Deactivate();
     }
 }

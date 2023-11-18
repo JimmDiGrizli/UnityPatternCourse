@@ -17,16 +17,22 @@ namespace Task4.Scripts
             if (_mesh == null) _mesh = GetComponent<MeshRenderer>();
         }
 
-        public void Select()
-        {
-            OnSelected.Invoke(Color);
-            gameObject.SetActive(false);
-        }
-
-        public void SetColor(ColorScriptableObject color)
+        public void Prepare(ColorScriptableObject color)
         {
             Color = color;
             _mesh.material.color = color.Color;
+            gameObject.SetActive(true);
+        }
+
+        public void Select()
+        {
+            OnSelected.Invoke(Color);
+            Deactivate();
+        }
+
+        public void Deactivate()
+        {
+            gameObject.SetActive(false);
         }
     }
 }
