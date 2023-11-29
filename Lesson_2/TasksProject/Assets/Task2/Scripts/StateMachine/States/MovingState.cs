@@ -6,7 +6,7 @@ namespace Task2.Scripts.StateMachine.States
     public class MovingState : IState
     {
         private static float FinishDistanceDelta => 0.001f;
-        
+
         private readonly IStateSwitcher _stateSwitcher;
         private readonly Npc _npc;
         private readonly NpcStateMachineData _data;
@@ -40,12 +40,12 @@ namespace Task2.Scripts.StateMachine.States
             _npc.WorkStarted -= OnWorkStated;
         }
 
-        public void Update()
+        public void Update(float deltaTime)
         {
             _npc.transform.position = Vector3.MoveTowards(
                 _npc.transform.position,
                 _target.position,
-                _npc.Config.MovingStateConfig.Speed * Time.deltaTime
+                _npc.Config.MovingStateConfig.Speed * deltaTime
             );
 
             if (Vector3.Distance(_npc.transform.position, _target.position) < FinishDistanceDelta)
@@ -54,14 +54,8 @@ namespace Task2.Scripts.StateMachine.States
             }
         }
 
-        private void OnWorkStated()
-        {
-            _switch = () => { _stateSwitcher.SwitchState<WorkingState>(); };
-        }
+        private void OnWorkStated() => _switch = () => { _stateSwitcher.SwitchState<WorkingState>(); };
 
-        private void OnSleepStated()
-        {
-            _switch = () => { _stateSwitcher.SwitchState<SleepingState>(); };
-        }
+        private void OnSleepStated() => _switch = () => { _stateSwitcher.SwitchState<SleepingState>(); };
     }
 }

@@ -7,14 +7,9 @@ namespace Task2.Scripts.StateMachine.States
         {
         }
 
-        public override void Enter()
-        {
-            base.Enter();
-
-            _expectedTime = _npc.Config.SleepingStateConfig.Time;
-        }
-
-        protected override void Execute()
+        public override void Enter() => _expectedTime = _npc.Config.SleepingStateConfig.Time;
+        
+        protected override void OnTimeEnd()
         {
             _data.NextPosition = _npc.WorkZone;
             _stateSwitcher.SwitchState<MovingState>();

@@ -4,6 +4,6 @@ namespace Task2.Scripts.StateMachine.States
     {
         void Enter();
         void Exit();
-        void Update();
+        void Update(float deltaTime);
     }
 }

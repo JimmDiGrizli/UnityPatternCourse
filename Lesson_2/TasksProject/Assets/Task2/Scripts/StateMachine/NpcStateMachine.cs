@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Task2.Scripts.StateMachine.States;
+using UnityEngine;
 
 namespace Task2.Scripts.StateMachine
 {
@@ -32,6 +33,6 @@ namespace Task2.Scripts.StateMachine
             _currentState.Enter();
         }
 
-        public void Update() => _currentState.Update();
+        public void Update() => _currentState.Update(Time.deltaTime);
     }
 }

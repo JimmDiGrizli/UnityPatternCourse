@@ -7,9 +7,9 @@ namespace Task2.Scripts.StateMachine.States
         protected readonly IStateSwitcher _stateSwitcher;
         protected readonly Npc _npc;
         protected readonly NpcStateMachineData _data;
-        
-        private float _timer;
         protected float _expectedTime;
+
+        private float _timer;
 
         protected ActionState(IStateSwitcher stateSwitcher, NpcStateMachineData data, Npc npc)
         {
@@ -18,19 +18,19 @@ namespace Task2.Scripts.StateMachine.States
             _data = data;
         }
 
-        public virtual void Enter() => _timer = 0;
+        public void Exit() => _timer = 0;
 
-        public void Exit() => _expectedTime = 0;
-
-        public void Update()
+        public void Update(float deltaTime)
         {
-            _timer += Time.deltaTime;
+            _timer += deltaTime;
 
             if (!(_timer >= _expectedTime)) return;
 
-            Execute();
+            OnTimeEnd();
         }
 
-        protected abstract void Execute();
+        public abstract void Enter();
+
+        protected abstract void OnTimeEnd();
     }
 }
