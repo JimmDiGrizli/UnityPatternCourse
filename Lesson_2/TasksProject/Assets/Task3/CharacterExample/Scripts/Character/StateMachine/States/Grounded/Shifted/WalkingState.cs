@@ -13,26 +13,4 @@ public class WalkingState : ShiftingState
 
         Data.Speed *= _config.SpeedRate;
     }
-
-    protected override void AddInputActionsCallbacks()
-    {
-        base.AddInputActionsCallbacks();
-
-        Input.Movement.BoostMove.started += OnBoostMoveKeyPressed;
-
-        Input.Movement.SlowDownMove.canceled += OnSlowDownMoveKeyCanceled;
-    }
-
-    protected override void RemoveInputActionsCallback()
-    {
-        base.RemoveInputActionsCallback();
-
-        Input.Movement.BoostMove.started -= OnBoostMoveKeyPressed;
-
-        Input.Movement.SlowDownMove.canceled -= OnSlowDownMoveKeyCanceled;
-    }
-
-    private void OnBoostMoveKeyPressed(InputAction.CallbackContext obj) => StateSwitcher.SwitchState<BoostRunningState>();
-
-    private void OnSlowDownMoveKeyCanceled(InputAction.CallbackContext obj) => StateSwitcher.SwitchState<RunningState>();
 }
