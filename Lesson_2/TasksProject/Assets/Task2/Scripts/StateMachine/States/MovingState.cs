@@ -5,12 +5,15 @@ namespace Task2.Scripts.StateMachine.States
 {
     public class MovingState : IState
     {
+        private static float FinishDistanceDelta => 0.001f;
+        
         private readonly IStateSwitcher _stateSwitcher;
         private readonly Npc _npc;
         private readonly NpcStateMachineData _data;
 
         private Transform _target;
         private Action _switch;
+
 
         public MovingState(IStateSwitcher stateSwitcher, NpcStateMachineData data, Npc npc)
         {
@@ -45,7 +48,7 @@ namespace Task2.Scripts.StateMachine.States
                 _npc.Config.MovingStateConfig.Speed * Time.deltaTime
             );
 
-            if (Vector3.Distance(_npc.transform.position, _target.position) < 0.001f)
+            if (Vector3.Distance(_npc.transform.position, _target.position) < FinishDistanceDelta)
             {
                 _switch();
             }

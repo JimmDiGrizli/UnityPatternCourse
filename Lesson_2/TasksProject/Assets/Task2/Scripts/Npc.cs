@@ -20,21 +20,12 @@ namespace Task2.Scripts
         public Transform SleepZone => _sleepZone;
         public Transform WorkZone => _workZone;
 
-        private void Awake()
-        {
-            _stateMachine = new NpcStateMachine(this);
-        }
+        private void Awake() => _stateMachine = new NpcStateMachine(this);
 
         private void Update() => _stateMachine.Update();
 
-        public void Sleep()
-        {
-            SleepStated?.Invoke();
-        }
+        public void Sleep() => SleepStated?.Invoke();
 
-        public void Work()
-        {
-            WorkStarted?.Invoke();
-        }
+        public void Work() => WorkStarted?.Invoke();
     }
 }

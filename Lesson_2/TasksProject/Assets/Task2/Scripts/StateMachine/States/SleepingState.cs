@@ -1,41 +1,23 @@
-using UnityEngine;
-
 namespace Task2.Scripts.StateMachine.States
 {
-    public class SleepingState : IState
+    public class SleepingState : ActionState
     {
-        private readonly IStateSwitcher _stateSwitcher;
-        private readonly Npc _npc;
-        private readonly NpcStateMachineData _data;
-        private float _timer;
-
-        public SleepingState(IStateSwitcher stateSwitcher, NpcStateMachineData data, Npc npc)
+        public SleepingState(IStateSwitcher stateSwitcher, NpcStateMachineData data, Npc npc) :
+            base(stateSwitcher, data, npc)
         {
-            _stateSwitcher = stateSwitcher;
-            _npc = npc;
-            _data = data;
         }
 
-        public void Enter()
+        public override void Enter()
         {
-            Debug.Log("Start sleeping.");
-            _timer = 0;
+            base.Enter();
+
+            _expectedTime = _npc.Config.SleepingStateConfig.Time;
         }
 
-        public void Exit()
+        protected override void Execute()
         {
-            Debug.Log("Finish sleeping.");
-        }
-
-        public void Update()
-        {
-            _timer += Time.deltaTime;
-
-            if (_timer >= _npc.Config.SleepingStateConfig.Time)
-            {
-                _data.NextPosition = _npc.WorkZone;
-                _stateSwitcher.SwitchState<MovingState>();
-            }
+            _data.NextPosition = _npc.WorkZone;
+            _stateSwitcher.SwitchState<MovingState>();
         }
     }
 }

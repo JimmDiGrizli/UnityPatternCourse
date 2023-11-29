@@ -7,10 +7,9 @@ namespace Task2.Scripts.Zones
     {
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.TryGetComponent<Npc>(out var npc))
-            {
-                Do(npc);
-            }
+            if (other.gameObject.TryGetComponent<Npc>(out var npc) == false) return;
+
+            Do(npc);
         }
 
         protected abstract void Do(Npc npc);
