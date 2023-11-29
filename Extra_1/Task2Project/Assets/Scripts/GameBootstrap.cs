@@ -9,12 +9,14 @@ public class GameBootstrap : MonoBehaviour
 {
     [SerializeField] private PlayerConfig _playerConfig;
 
-    [FormerlySerializedAs("_restartView")] [Space] [SerializeField] private RestartLevelView _restartLevelView;
-    [SerializeField] private PlayerPropertyView _healthPointView;
-    [SerializeField] private PlayerPropertyView _levelView;
+    [FormerlySerializedAs("_restartView")] [Space] [SerializeField]
+    private RestartLevelView _restartLevelView;
+
+    [SerializeField] private TextView _healthPointView;
+    [SerializeField] private TextView _levelView;
 
     private Player _player;
-    private Level _level;
+    private GamePlay _gamePlay;
     private InputService _input;
 
     private readonly List<IDisposable> _disposable = new();
@@ -23,26 +25,23 @@ public class GameBootstrap : MonoBehaviour
     {
         InitPlayer();
         _input = new InputService();
-        _level = new Level(_input, _player);
-        _disposable.Add(new RestartLevelMediator(_level, _restartLevelView));
+        _gamePlay = new GamePlay(_input, _player);
+        _disposable.Add(new RestartLevelMediator(_gamePlay, _restartLevelView));
 
-        _level.Start();
+        _gamePlay.Start();
     }
 
     public void Update() => _input?.Update();
 
-    public void OnDestroy()
-    {
-        _disposable.ForEach(mediator => mediator.Dispose());
-    }
+    public void OnDestroy() => _disposable.ForEach(disposable => disposable.Dispose());
 
     private void InitPlayer()
     {
-        var healthPointProperty = new Property(_playerConfig.HealthPoint);
-        var levelProperty = new Property(_playerConfig.Level);
+        var healthPointProperty = new Property<int>(_playerConfig.HealthPoint);
+        var levelProperty = new Property<int>(_playerConfig.Level);
 
         _player = new Player(healthPointProperty, levelProperty);
-        _disposable.Add(new PlayerPropertyMediator(_player, healthPointProperty, _healthPointView));
-        _disposable.Add(new PlayerPropertyMediator(_player, levelProperty, _levelView));
+        _disposable.Add(new PropertyMediator(healthPointProperty, _healthPointView));
+        _disposable.Add(new PropertyMediator(levelProperty, _levelView));
     }
 }

@@ -1,14 +1,14 @@
 using System;
 using UnityEngine;
 
-public class Level
+public class GamePlay
 {
     private readonly InputService _inputService;
     private readonly Player _player;
 
     public event Action Defeat;
 
-    public Level(InputService inputService, Player player)
+    public GamePlay(InputService inputService, Player player)
     {
         _inputService = inputService;
         _player = player;

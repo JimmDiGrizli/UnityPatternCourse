@@ -2,12 +2,12 @@ using System;
 
 public class Player
 {
-    private readonly Property _healthPoint;
-    private readonly Property _level;
+    private readonly Property<int> _healthPoint;
+    private readonly Property<int> _level;
 
     public event Action Died;
 
-    public Player(Property healthPoint, Property level)
+    public Player(Property<int> healthPoint, Property<int> level)
     {
         _healthPoint = healthPoint;
         _level = level;

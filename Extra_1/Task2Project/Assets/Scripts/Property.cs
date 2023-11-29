@@ -1,28 +1,23 @@
 using System;
 
-public class Property
+public class Property<T>
 {
-    private readonly int _initial;
-    private int _value;
+    private readonly T _initial;
+    private T _value;
 
-    public event Action<int> Changed;
+    public event Action<T> Changed;
 
-    public Property(int value)
+    public Property(T value)
     {
         Value = value;
         _initial = value;
     }
 
-    public int Value
+    public T Value
     {
         get => _value;
         set
         {
-            if (value < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(value));
-            }
-
             _value = value;
             Changed?.Invoke(Value);
         }
