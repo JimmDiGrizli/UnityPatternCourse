@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Task_2.Image
+namespace Task_2.Scripts.Image
 {
     public abstract class ImageResource
     {

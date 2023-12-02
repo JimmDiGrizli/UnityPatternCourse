@@ -1,6 +1,6 @@
-using Task_2.Image;
+using Task_2.Scripts.Image;
 
-namespace Task_2
+namespace Task_2.Scripts
 {
     public abstract class ResourceImageFactory
     {

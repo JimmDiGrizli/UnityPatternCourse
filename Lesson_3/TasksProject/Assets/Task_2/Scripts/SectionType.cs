@@ -1,4 +1,4 @@
-namespace Task_2
+namespace Task_2.Scripts
 {
     public enum SectionType
     {

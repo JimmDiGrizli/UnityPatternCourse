@@ -1,6 +1,6 @@
 using System;
 
-namespace Task_2.Image.Store
+namespace Task_2.Scripts.Image.Store
 {
     public class StoreResourceFactory : ResourceImageFactory
     {

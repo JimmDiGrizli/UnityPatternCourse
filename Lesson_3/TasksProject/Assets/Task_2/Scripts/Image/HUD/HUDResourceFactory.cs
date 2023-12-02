@@ -1,6 +1,6 @@
 using System;
 
-namespace Task_2.Image.HUD
+namespace Task_2.Scripts.Image.HUD
 {
     public class HUDResourceFactory : ResourceImageFactory
     {

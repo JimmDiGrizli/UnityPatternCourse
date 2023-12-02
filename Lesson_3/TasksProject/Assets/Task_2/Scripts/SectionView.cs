@@ -1,7 +1,7 @@
-using Task_2.Image;
+using Task_2.Scripts.Image;
 using UnityEngine;
 
-namespace Task_2
+namespace Task_2.Scripts
 {
     public class SectionView : MonoBehaviour
     {

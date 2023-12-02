@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Task_2.Image.HUD;
-using Task_2.Image.Store;
+using Task_2.Scripts.Image.HUD;
+using Task_2.Scripts.Image.Store;
 using UnityEngine;
 
-namespace Task_2
+namespace Task_2.Scripts
 {
     public class Bootstrap : MonoBehaviour
     {
