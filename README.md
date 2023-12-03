@@ -57,3 +57,4 @@
     -  `/Lesson_3/TasksProject/Assets/Task_3` — все файлы по третьему заданию.
     -  `/Lesson_3/TasksProject/Assets/Task_4` — все файлы по четвертому заданию.
     -  `/Lesson_3/TasksProject/Assets/Task_5` — все файлы по пятому заданию.
+       - Запускам `Play mode` и смотрим `Console` =)  
