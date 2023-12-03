@@ -47,3 +47,13 @@
 - `/Lesson_3` — каталог с заданием после третьей лекции (фабрика, визитер, декоратор)
 
   - `/Lesson_3/Task_1.md` — первое задание
+ 
+  - `/Lesson_3/TasksProject` — один проект для заданий со 2 по 5.
+ 
+    -  `/Lesson_3/TasksProject/Assets/Task_2` — все файлы по второму заданию.
+      
+       - Смена иконок через `Bootstrap` компонент сменой `Section Type` и билдом через `BuildMenu`.  
+
+    -  `/Lesson_3/TasksProject/Assets/Task_3` — все файлы по третьему заданию.
+    -  `/Lesson_3/TasksProject/Assets/Task_4` — все файлы по четвертому заданию.
+    -  `/Lesson_3/TasksProject/Assets/Task_5` — все файлы по пятому заданию.
