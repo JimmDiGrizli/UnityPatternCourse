@@ -36,7 +36,6 @@ namespace Task_1.Scripts.Enemies
             if (_isPaused)
                 return;
 
-
             _timer += Time.deltaTime;
 
             if (_timer < _spawnCooldown)
