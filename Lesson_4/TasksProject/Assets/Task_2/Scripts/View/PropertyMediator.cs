@@ -1,6 +1,7 @@
 using System;
+using Task_2.Scripts.Player;
 
-namespace View
+namespace Task_2.Scripts.View
 {
     public class PropertyMediator : IDisposable
     {

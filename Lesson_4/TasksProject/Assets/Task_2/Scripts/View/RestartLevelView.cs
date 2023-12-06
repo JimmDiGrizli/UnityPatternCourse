@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace View
+namespace Task_2.Scripts.View
 {
     public class RestartLevelView : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace View
+namespace Task_2.Scripts.View
 {
     public class RestartLevelMediator : IDisposable
     {

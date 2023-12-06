@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace View
+namespace Task_2.Scripts.View
 {
     public class TextView : MonoBehaviour
     {
