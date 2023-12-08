@@ -38,9 +38,6 @@
   - `/Extra_1/Task_1.md` — первое задание
 
   - `/Extra_1/TaskProject` — проект второго задания
-
-  - Для смены режима:
-
     - `D` — уменьшение жизней, 
     - `L` — увеличение уровней.
 
@@ -57,4 +54,16 @@
     -  `/Lesson_3/TasksProject/Assets/Task_3` — все файлы по третьему заданию.
     -  `/Lesson_3/TasksProject/Assets/Task_4` — все файлы по четвертому заданию.
     -  `/Lesson_3/TasksProject/Assets/Task_5` — все файлы по пятому заданию.
-       - Запускам `Play mode` и смотрим `Console` =)  
+       - Запускам `Play mode` и смотрим `Console` =)
+
+- `/Lesson_4/TasksProject` — каталог с заданием после четвертой лекции (zenject)
+
+  -  `/Lesson_4/TasksProject/Assets/Task_1` — все файлы по перовому заданию.
+     - `F` — поставить на паузу, 
+     - `S` — снять с паузы.
+
+  -  `/Lesson_4/TasksProject/Assets/Task_2` — все файлы по второму заданию.
+     - `D` — уменьшение жизней, 
+     - `L` — увеличение уровней.
+
+  -  `/Lesson_4/TasksProject/Assets/Task_3` — все файлы по третьему заданию.
