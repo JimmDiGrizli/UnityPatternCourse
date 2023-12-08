@@ -6,11 +6,11 @@ using Zenject;
 
 namespace Task_3.Scripts.View
 {
-    public class MainMenuHUD : MonoBehaviour
+    public class MainMenuView : MonoBehaviour
     {
         [SerializeField] private Button _allBalls;
         [SerializeField] private Button _oneColorBalls;
-        
+
         private SceneLoaderMediator _loader;
 
         [Inject]
@@ -32,9 +32,7 @@ namespace Task_3.Scripts.View
         }
 
         private void OnOneColorBallsClick() => _loader.GoToGameplay(new LeveLoadingData(VictoryType.OneColorBalls));
-        
 
         private void OnAllBallsClick() => _loader.GoToGameplay(new LeveLoadingData(VictoryType.AllBall));
-        
     }
 }

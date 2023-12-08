@@ -2,36 +2,29 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Random = System.Random;
 
 namespace Task_3.Scripts.Balls
 {
     public class BallRepository
     {
-        private readonly List<BallColor> _colors;
-        private readonly Ball[] _balls;
+        private readonly List<Ball> _balls = new();
 
-        public BallRepository(IEnumerable<BallColor> colors)
+        public void Add(Ball ball) => _balls.Add(ball);
+
+        public int Count(Func<IBall, bool> action = null) => action != null ? _balls.Count(action) : _balls.Count;
+
+        public IBall Random() => _balls[0];
+
+        public IEnumerable<IBall> FindAll() => _balls;
+
+        public void RemoveAll()
         {
-            _colors = new List<BallColor>(colors);
-            _balls = GameObject.FindObjectsOfType<Ball>();
-
-            PrepareBalls();
-        }
-
-        public int Count(Func<Ball, bool> action = null) => action != null ? _balls.Count(action) : _balls.Length;
-
-        public BallColor Random() => _balls[0].BallColor;
-
-        public IEnumerable<Ball> FindAll() => _balls;
-
-        private void PrepareBalls()
-        {
-            var rnd = new Random();
-            foreach (var ball in FindAll())
+            foreach (var ball in _balls)
             {
-                ball.Prepare(_colors[rnd.Next(0, _colors.Count)]);
+                GameObject.Destroy(ball.gameObject);
             }
+
+            _balls.Clear();
         }
     }
 }

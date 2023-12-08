@@ -9,16 +9,16 @@ namespace Task_3.Scripts
         public void Tick()
         {
             if (
-                Camera.main is null ||
+                UnityEngine.Camera.main is null ||
                 Input.GetKey(KeyCode.Mouse0) == false ||
-                Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit) == false
+                Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition), out var hit) == false
             )
             {
                 return;
             }
 
 
-            if (hit.transform.TryGetComponent<Ball>(out var ball))
+            if (hit.transform.TryGetComponent<IBall>(out var ball))
             {
                 ball.Select();
             }

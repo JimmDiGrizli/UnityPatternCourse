@@ -12,26 +12,16 @@ namespace Task_3.Scripts.Balls
 
         public BallColor BallColor { get; private set; }
 
-        private void OnValidate()
-        {
-            if (_mesh == null) _mesh = GetComponent<MeshRenderer>();
-        }
-
         public void Prepare(BallColor ballColor)
         {
+            if (_mesh == null) _mesh = GetComponent<MeshRenderer>();
             BallColor = ballColor;
-            _mesh.material.color = ballColor.Color;
-            gameObject.SetActive(true);
+            _mesh.material.color = BallColor.Color;
         }
 
         public void Select()
         {
             OnSelected?.Invoke(BallColor);
-            Deactivate();
-        }
-
-        public void Deactivate()
-        {
             gameObject.SetActive(false);
         }
     }

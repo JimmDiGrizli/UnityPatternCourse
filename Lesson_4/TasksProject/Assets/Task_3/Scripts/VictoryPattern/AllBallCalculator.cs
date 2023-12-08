@@ -1,5 +1,4 @@
 using Task_3.Scripts.Balls;
-using UnityEngine;
 
 namespace Task_3.Scripts.VictoryPattern
 {
@@ -9,9 +8,16 @@ namespace Task_3.Scripts.VictoryPattern
 
         public AllBallsCalculator(BallRepository repository) : base(repository)
         {
-            _count = _repository.Count();
-            Debug.Log($"Для победы нужно лопнуть все {_count} шары.");
         }
+
+        public override void Start()
+        {
+            base.Start();
+
+            _count = _repository.Count();
+        }
+
+        public override string CurrentRule() => $"Для победы нужно лопнуть все {_count} шары.";
 
         protected override void Interact(BallColor color)
         {

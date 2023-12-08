@@ -6,6 +6,6 @@ namespace Task_3.Scripts.Balls
     {
         BallColor BallColor { get; }
         event Action<BallColor> OnSelected;
-        public void Deactivate();
+        void Select();
     }
 }
