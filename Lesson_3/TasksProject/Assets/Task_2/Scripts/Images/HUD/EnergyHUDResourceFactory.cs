@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Task_2.Scripts.Image.HUD
+namespace Task_2.Scripts.Images.HUD
 {
     public class EnergyHUDResourceFactory : ImageResource
     {

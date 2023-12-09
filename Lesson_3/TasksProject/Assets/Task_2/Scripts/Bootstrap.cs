@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Task_2.Scripts.Image.HUD;
-using Task_2.Scripts.Image.Store;
+using Task_2.Scripts.Images.HUD;
+using Task_2.Scripts.Images.Store;
 using UnityEngine;
 
 namespace Task_2.Scripts

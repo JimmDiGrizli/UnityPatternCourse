@@ -1,4 +1,4 @@
-using Task_2.Scripts.Image;
+using Task_2.Scripts.Images;
 
 namespace Task_2.Scripts
 {

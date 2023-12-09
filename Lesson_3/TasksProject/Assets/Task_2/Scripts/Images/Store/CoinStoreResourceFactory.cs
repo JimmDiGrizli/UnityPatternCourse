@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Task_2.Scripts.Image.Store
+namespace Task_2.Scripts.Images.Store
 {
     public class CoinStoreResourceFactory : ImageResource
     {
