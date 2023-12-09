@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEngine.Random;
 using Random = System.Random;
 
 namespace Task_3.Scripts
@@ -43,9 +44,7 @@ namespace Task_3.Scripts
                         continue;
                     }
 
-                    var coin = _coinFactory.Get(
-                        (CoinType)UnityEngine.Random.Range(0, Enum.GetValues(typeof(CoinType)).Length)
-                    );
+                    var coin = _coinFactory.Get(GetRandomCoinType());
                     coin.transform.position = point.transform.position;
 
                     break;
@@ -54,5 +53,7 @@ namespace Task_3.Scripts
                 yield return new WaitForSeconds(_spawnCooldown);
             }
         }
+
+        private static CoinType GetRandomCoinType() => (CoinType)Range(0, Enum.GetValues(typeof(CoinType)).Length);
     }
 }
