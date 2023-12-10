@@ -2,16 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Task_3.Scripts.Coins;
 using UnityEngine;
 using static UnityEngine.Random;
 using Random = System.Random;
 
-namespace Task_3.Scripts
+namespace Task_3.Scripts.SpawnPoints
 {
     public class CoinSpawner : MonoBehaviour
     {
         [SerializeField, Range(0, 10)] private float _spawnCooldown = 1;
-        [SerializeField] private List<Transform> _spawnPoints;
+        [SerializeField] private List<SpawnPoint> _spawnPoints;
         [SerializeField] private CoinFactory _coinFactory;
 
         private const float BusyRadius = 0.5f;
@@ -37,20 +38,17 @@ namespace Task_3.Scripts
 
             while (true)
             {
-                foreach (var point in _spawnPoints.OrderBy(x => rnd.Next()))
-                {
-                    if (Physics.CheckSphere(point.transform.position, BusyRadius))
-                    {
-                        continue;
-                    }
-
-                    var coin = _coinFactory.Get(GetRandomCoinType());
-                    coin.transform.position = point.transform.position;
-
-                    break;
-                }
-
                 yield return new WaitForSeconds(_spawnCooldown);
+
+                var emptyPoints = _spawnPoints.FindAll(point => point.IsEmpty());
+
+                if (emptyPoints.Count == 0) continue;
+
+                var spawnPoint = emptyPoints.ElementAt(rnd.Next(0, emptyPoints.Count));
+
+                var coin = _coinFactory.Get(GetRandomCoinType());
+                spawnPoint.SetCoin(coin);
+                coin.transform.position = spawnPoint.transform.position;
             }
         }
 

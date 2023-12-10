@@ -1,4 +1,5 @@
 ﻿using System;
+using Task_3.Scripts.Coins;
 using UnityEngine;
 
 namespace Task_3.Scripts
@@ -10,7 +11,7 @@ namespace Task_3.Scripts
         [SerializeField] private StandardCoin _standardCoinPrefab;
         [SerializeField] private RandomCoin _randomCoinPrefab;
 
-        public Coin Get(CoinType type)
+        public Coins.Coin Get(CoinType type)
         {
             return type switch
             {

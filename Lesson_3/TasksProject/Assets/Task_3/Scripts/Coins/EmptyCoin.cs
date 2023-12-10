@@ -1,4 +1,4 @@
-namespace Task_3.Scripts
+namespace Task_3.Scripts.Coins
 {
     public class EmptyCoin : Coin
     {

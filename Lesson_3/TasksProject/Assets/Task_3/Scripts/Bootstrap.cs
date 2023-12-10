@@ -1,3 +1,4 @@
+using Task_3.Scripts.SpawnPoints;
 using UnityEngine;
 
 namespace Task_3.Scripts

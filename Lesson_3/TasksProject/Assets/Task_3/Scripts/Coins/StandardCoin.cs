@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Task_3.Scripts
+namespace Task_3.Scripts.Coins
 {
     public class StandardCoin : Coin
     {
