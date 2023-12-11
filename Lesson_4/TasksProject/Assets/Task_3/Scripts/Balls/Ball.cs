@@ -14,7 +14,11 @@ namespace Task_3.Scripts.Balls
 
         public void Prepare(BallColor ballColor)
         {
-            if (_mesh == null) _mesh = GetComponent<MeshRenderer>();
+            if (_mesh == null)
+            {
+                _mesh = GetComponent<MeshRenderer>();
+            }
+
             BallColor = ballColor;
             _mesh.material.color = BallColor.Color;
         }

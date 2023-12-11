@@ -5,13 +5,13 @@ namespace Task_3.Scripts.Level
 {
     public class Level
     {
-        private readonly LevelBuilder _builder;
+        private readonly GridGenerator _builder;
         private readonly IVictoryCalculator _victoryCalculator;
 
         public event Action OnStarted;
         public event Action<bool> OnFinished;
 
-        public Level(LevelBuilder builder, IVictoryCalculator victoryCalculator)
+        public Level(GridGenerator builder, IVictoryCalculator victoryCalculator)
         {
             _builder = builder;
             _victoryCalculator = victoryCalculator;

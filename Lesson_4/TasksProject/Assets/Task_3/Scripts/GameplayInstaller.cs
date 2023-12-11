@@ -39,7 +39,7 @@ namespace Task_3.Scripts
             Container.BindInterfacesAndSelfTo<LevelMediator>().AsSingle().WithArguments(_menuView, _ruleView);
 
             Container.Bind<LevelData>().FromInstance(_levelData).AsSingle();
-            Container.Bind<LevelBuilder>().AsSingle().WithArguments(_levelData, _colors);
+            Container.Bind<GridGenerator>().AsSingle().WithArguments(_levelData, _colors);
             Container.Bind<Level.Level>().AsSingle().NonLazy();
         }
 

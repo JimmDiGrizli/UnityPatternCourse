@@ -5,13 +5,13 @@ using Random = System.Random;
 
 namespace Task_3.Scripts.Level
 {
-    public class LevelBuilder
+    public class GridGenerator
     {
         private readonly BallFactory _factory;
         private readonly LevelData _data;
         private readonly List<BallColor> _colors;
 
-        public LevelBuilder(BallFactory factory, LevelData data, IEnumerable<BallColor> colors)
+        public GridGenerator(BallFactory factory, LevelData data, IEnumerable<BallColor> colors)
         {
             _factory = factory;
             _data = data;
