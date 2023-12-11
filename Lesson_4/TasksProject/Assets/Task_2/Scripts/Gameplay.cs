@@ -3,14 +3,14 @@ using UnityEngine;
 
 namespace Task_2.Scripts
 {
-    public class GamePlay
+    public class Gameplay
     {
         private readonly InputService _inputService;
         private readonly Player.Player _player;
 
         public event Action Defeat;
 
-        public GamePlay(InputService inputService, Player.Player player)
+        public Gameplay(InputService inputService, Player.Player player)
         {
             _inputService = inputService;
             _player = player;

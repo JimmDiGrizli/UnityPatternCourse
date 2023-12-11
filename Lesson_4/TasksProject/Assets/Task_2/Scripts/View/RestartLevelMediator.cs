@@ -4,22 +4,22 @@ namespace Task_2.Scripts.View
 {
     public class RestartLevelMediator : IDisposable
     {
-        private readonly GamePlay _gamePlay;
+        private readonly Gameplay _gameplay;
         private readonly RestartLevelView _levelView;
 
-        public RestartLevelMediator(GamePlay gamePlay, RestartLevelView levelView)
+        public RestartLevelMediator(Gameplay gameplay, RestartLevelView levelView)
         {
-            _gamePlay = gamePlay;
+            _gameplay = gameplay;
             _levelView = levelView;
 
-            _gamePlay.Defeat += ShowView;
+            _gameplay.Defeat += ShowView;
             _levelView.OnRestartButtonClicked += RestartLevel;
         }
 
         public void Dispose()
         {
             _levelView.OnRestartButtonClicked -= RestartLevel;
-            _gamePlay.Defeat -= RestartLevel;
+            _gameplay.Defeat -= RestartLevel;
         }
 
         private void ShowView() => _levelView.Show();
@@ -27,7 +27,7 @@ namespace Task_2.Scripts.View
         private void RestartLevel()
         {
             _levelView.Hide();
-            _gamePlay.Restart();
+            _gameplay.Restart();
         }
     }
 }
